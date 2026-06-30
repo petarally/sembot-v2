@@ -17,10 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend ./backend
 
-# Zapeci modele u image (preuzmu se sad, ne pri svakom cold startu).
-RUN python -c "import os; from sentence_transformers import SentenceTransformer, CrossEncoder; \
-    SentenceTransformer(os.environ.get('EMBED_MODEL','intfloat/multilingual-e5-base')); \
-    CrossEncoder(os.environ.get('RERANKER_MODEL','BAAI/bge-reranker-v2-m3'))"
+# Zapeci embedding model u image (preuzme se sad, ne pri svakom cold startu).
+# Reranker je po defaultu isključen; ako ga uključiš (USE_RERANKER=true), dodaj
+# i njegov prefetch ovdje da se ne preuzima pri startu.
+RUN python -c "from sentence_transformers import SentenceTransformer; \
+    from backend.config import EMBED_MODEL; SentenceTransformer(EMBED_MODEL)"
 
 # Zapeci i embedding cache (.npz) da se rute ne enkodiraju pri prvom upitu.
 RUN python -c "from backend.search import SemanticIndex; from backend.data import load_qa_pairs; \

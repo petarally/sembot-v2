@@ -3,15 +3,16 @@
 import os
 
 # --- Modeli -----------------------------------------------------------------
-# Bi-encoder za semantičko pretraživanje. multilingual-e5-base dobro pokriva
-# hrvatski; E5 modeli traže prefikse "query: " / "passage: ".
-EMBED_MODEL = os.environ.get("EMBED_MODEL", "intfloat/multilingual-e5-base")
+# Bi-encoder za semantičko pretraživanje. e5-small je najmanji dobar multijezični
+# model (pokriva hrvatski). Po potrebi nadogradi na ...-e5-base / ...-e5-large.
+# E5 modeli traže prefikse "query: " / "passage: ".
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "intfloat/multilingual-e5-small")
 QUERY_PREFIX = os.environ.get("QUERY_PREFIX", "query: ")
 PASSAGE_PREFIX = os.environ.get("PASSAGE_PREFIX", "passage: ")
 
-# Cross-encoder reranker (multijezičan). Skuplji, ali precizniji; rerankira
-# samo top-k kandidata, nikad cijelu bazu.
-USE_RERANKER = os.environ.get("USE_RERANKER", "true").lower() == "true"
+# Cross-encoder reranker (multijezičan). Precizniji, ali velik i spor; ISKLJUČEN
+# po defaultu. Uključi (USE_RERANKER=true) tek ako mjerenje pokaže da pomaže.
+USE_RERANKER = os.environ.get("USE_RERANKER", "false").lower() == "true"
 RERANKER_MODEL = os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 
 # --- Pretraga ---------------------------------------------------------------

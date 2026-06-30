@@ -95,11 +95,17 @@ broj QA parova i je li reranker već učitan.
 
 | Varijabla | Default | Opis |
 |---|---|---|
-| `EMBED_MODEL` | `intfloat/multilingual-e5-base` | bi-encoder za pretragu |
-| `USE_RERANKER` | `true` | uključi cross-encoder reranker |
-| `RERANKER_MODEL` | `BAAI/bge-reranker-v2-m3` | multijezični reranker |
+| `EMBED_MODEL` | `intfloat/multilingual-e5-small` | bi-encoder za pretragu (~0.5 GB) |
+| `USE_RERANKER` | `false` | cross-encoder reranker (isključen — uključi tek ako mjerenje pokaže potrebu) |
+| `RERANKER_MODEL` | `BAAI/bge-reranker-v2-m3` | multijezični reranker (~2.3 GB) |
 | `MIN_RETRIEVAL_SCORE` | `0.80` | prag ispod kojeg je pitanje izvan domene |
-| `RERANK_THRESHOLD` / `RERANK_MARGIN` | `0.50` / `0.15` | pragovi za suzdržavanje |
+| `RERANK_THRESHOLD` / `RERANK_MARGIN` | `0.50` / `0.15` | pragovi za suzdržavanje (samo ako je reranker uključen) |
+
+> **Default je lagan:** samo bi-encoder (~0.5 GB), bez rerankera. Stane u manju
+> instancu i brz je (~50 ms/upit). Reranker (`USE_RERANKER=true`) je teži (4 GB RAM,
+> ~1–3 s/upit) i ima smisla tek ako kalibracija pokaže da bi-encoder nije dovoljno
+> točan. Kad uključiš reranker, **dodaj mu i prefetch u Dockerfile** (inače se
+> preuzima pri startu).
 | `QA_STORE` | `json` | pohrana: `json` (razvoj) ili `firestore` (produkcija) |
 | `FIRESTORE_COLLECTION` | `qa_pairs` | naziv Firestore kolekcije |
 | `ADMIN_TOKEN` | (prazno) | token za admin endpointe; prazno = admin isključen |
@@ -147,13 +153,14 @@ ništa s interneta. Reranker se učitava u pozadini, pa prvi upit ne čeka cijel
 ```
 gcloud run deploy sembot-backend \
   --source . \
-  --memory 4Gi --cpu 2 --cpu-boost \
+  --memory 2Gi --cpu 1 --cpu-boost \
   --port 8080 \
   --region europe-west1 \
   --allow-unauthenticated
 ```
 
-- `--memory 4Gi` — modeli traže prostora u RAM-u (inače OOM pri startu).
+- `--memory 2Gi` — dovoljno za bi-encoder (~0.5 GB) + radni prostor. Ako uključiš
+  reranker, podigni na `--memory 4Gi --cpu 2`.
 - `--cpu-boost` — više CPU-a tijekom starta = brže učitavanje modela.
 - Bez `--min-instances` (scale-to-zero): nema fiksnog troška, ali prvi upit nakon
   mirovanja čeka ~5–10 s da se digne kontejner. Za nulti cold start dodajte
