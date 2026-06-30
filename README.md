@@ -63,4 +63,32 @@ Pristup aplikaciji:
 
 ## Prilagodba pitanja i odgovora
 
-Pitanja i odgovore uredite u `backend/data/qa_data.json`. Nakon uređivanja ponovno pokrenite backend.
+Pitanja i odgovore uredite u `backend/data/qa_data.json`. Svaki par može imati i
+dodatne formulacije za bolji recall:
+
+```json
+{
+  "question": "Koji su rokovi za prijavu ispita?",
+  "answer": "...",
+  "paraphrases": [
+    "Do kada se prijavljuju ispiti?",
+    "Kada je rok za prijavu na ispitni rok?"
+  ]
+}
+```
+
+Embeddingi se računaju jednom i keširaju u `backend/data/.embeddings_cache.npz`;
+cache se automatski osvježi kad se promijene podaci, model ili prefiksi.
+
+## Konfiguracija (env varijable)
+
+| Varijabla | Default | Opis |
+|---|---|---|
+| `EMBED_MODEL` | `intfloat/multilingual-e5-base` | bi-encoder za pretragu |
+| `USE_RERANKER` | `true` | uključi cross-encoder reranker |
+| `RERANKER_MODEL` | `BAAI/bge-reranker-v2-m3` | multijezični reranker |
+| `MIN_RETRIEVAL_SCORE` | `0.80` | prag ispod kojeg je pitanje izvan domene |
+| `RERANK_THRESHOLD` / `RERANK_MARGIN` | `0.50` / `0.15` | pragovi za suzdržavanje |
+
+> Pragovi su početne vrijednosti — kalibrirajte ih na testnom skupu stvarnih upita.
+> Pri prvom pokretanju modeli se preuzimaju (e5-base ~440 MB, reranker ~2.3 GB).
