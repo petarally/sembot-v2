@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/style.css?v=2" />
+    <title>Fakultetski Chatbot</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="static/img/unipu-logo.png" alt="UNIPU logo" class="logo" />
+        <h1>Fakultetski Chatbot</h1>
+        <p>Postavite pitanje o fakultetu i dobit ćete odgovor</p>
+      </header>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot">
+            <div class="message-content">
+              Pozdrav! Ja sam Fakultetski Chatbot. Kako vam mogu pomoći danas?
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input">
+          <form id="chatForm">
+            <input
+              type="text"
+              id="userInput"
+              placeholder="Upišite svoje pitanje..."
+              required
+            />
+            <button type="submit">Pošalji</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <h3>Popularna pitanja:</h3>
+        <div class="suggestion-buttons">
+          <button class="suggestion-btn">
+            Koji su rokovi za prijavu ispita?
+          </button>
+          <button class="suggestion-btn">Kada počinje akademska godina?</button>
+          <button class="suggestion-btn">
+            Kako kontaktirati studentsku službu?
+          </button>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 UNIPU. Sva prava pridržana.</p>
+      </footer>
+    </div>
+
+    <script src="static/js/config.js?v=2"></script>
+    <script src="static/js/script.js"></script>
+  </body>
+</html>

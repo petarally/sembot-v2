@@ -1,0 +1,7 @@
+fastapi==0.115.6
+uvicorn==0.25.0
+semantic-router==0.0.26
+pydantic>=2.5.3,<3.0.0
+sentence-transformers>=2.2.2
+scikit-learn>=1.0.0
+numpy>=1.21.0
