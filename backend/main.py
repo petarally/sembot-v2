@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import uvicorn
+from .config import ADMIN_TOKEN
 from .router import ChatbotRouter
 
 # Inicijalizacija FastAPI aplikacije
@@ -22,7 +23,7 @@ chatbot_router = ChatbotRouter()
 
 # Model za zahtjev chatbota
 class ChatRequest(BaseModel):
-    query: str
+    query: str = Field(min_length=1, max_length=1000)
 
 # Updated response model to support suggested questions
 class ChatResponse(BaseModel):
@@ -53,6 +54,56 @@ async def health():
         "qa_pairs": len(chatbot_router.qa_pairs),
         "reranker_ready": chatbot_router.reranker.available,
     }
+
+# --- Admin: punjenje baze bez redeploya -------------------------------------
+class AddQaRequest(BaseModel):
+    question: str = Field(min_length=1, max_length=500)
+    answer: str = Field(min_length=1, max_length=5000)
+    paraphrases: list[str] = []
+
+
+class BulkAddRequest(BaseModel):
+    items: list[AddQaRequest] = Field(min_length=1, max_length=2000)
+
+
+def require_admin(x_admin_token: str = Header(default="")):
+    """Propusti samo s ispravnim tokenom. Ako ADMIN_TOKEN nije postavljen, admin je isključen."""
+    if not ADMIN_TOKEN:
+        raise HTTPException(status_code=503, detail="Admin nije omogućen (ADMIN_TOKEN nije postavljen).")
+    if x_admin_token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="Neispravan admin token.")
+
+
+@app.get("/admin/qa", dependencies=[Depends(require_admin)])
+async def list_qa():
+    return chatbot_router.list_qa()
+
+
+@app.post("/admin/qa", dependencies=[Depends(require_admin)])
+async def add_qa(req: AddQaRequest):
+    try:
+        return chatbot_router.add_qa(req.question, req.answer, req.paraphrases)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/admin/qa/bulk", dependencies=[Depends(require_admin)])
+async def add_qa_bulk(req: BulkAddRequest):
+    """Dodaj više pitanja odjednom (all-or-nothing: ako je ijedan neispravan, ništa se ne sprema)."""
+    items = [{"question": i.question, "answer": i.answer, "paraphrases": i.paraphrases} for i in req.items]
+    try:
+        added = chatbot_router.add_qa_bulk(items)
+        return {"added": len(added), "items": added}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.delete("/admin/qa/{qa_id}", dependencies=[Depends(require_admin)])
+async def delete_qa(qa_id: str):
+    if not chatbot_router.delete_qa(qa_id):
+        raise HTTPException(status_code=404, detail="Pitanje nije pronađeno.")
+    return {"deleted": qa_id}
+
 
 # Root endpoint za provjeru da API radi
 @app.get("/", response_class=HTMLResponse)

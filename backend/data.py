@@ -14,12 +14,12 @@ def load_qa_pairs() -> list[dict]:
     print(f"Učitavanje podataka iz: {QA_PATH}")
     with open(QA_PATH, "r", encoding="utf-8") as file:
         qa_pairs = json.load(file)["qa_pairs"]
-    _validate(qa_pairs)
+    validate_qa_pairs(qa_pairs)
     print(f"Učitano {len(qa_pairs)} pitanja i odgovora.")
     return qa_pairs
 
 
-def _validate(qa_pairs: list[dict]) -> None:
+def validate_qa_pairs(qa_pairs: list[dict]) -> None:
     """Glasno padni na neispravnom unosu, imenujući problem (umjesto kasnijeg KeyError)."""
     if not isinstance(qa_pairs, list) or not qa_pairs:
         raise ValueError("qa_data.json: 'qa_pairs' mora biti neprazna lista.")

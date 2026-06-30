@@ -100,9 +100,44 @@ broj QA parova i je li reranker već učitan.
 | `RERANKER_MODEL` | `BAAI/bge-reranker-v2-m3` | multijezični reranker |
 | `MIN_RETRIEVAL_SCORE` | `0.80` | prag ispod kojeg je pitanje izvan domene |
 | `RERANK_THRESHOLD` / `RERANK_MARGIN` | `0.50` / `0.15` | pragovi za suzdržavanje |
+| `QA_STORE` | `json` | pohrana: `json` (razvoj) ili `firestore` (produkcija) |
+| `FIRESTORE_COLLECTION` | `qa_pairs` | naziv Firestore kolekcije |
+| `ADMIN_TOKEN` | (prazno) | token za admin endpointe; prazno = admin isključen |
 
 > Pragovi su početne vrijednosti — kalibrirajte ih na testnom skupu stvarnih upita.
 > Pri prvom pokretanju modeli se preuzimaju (e5-base ~440 MB, reranker ~2.3 GB).
+
+## Punjenje baze bez redeploya (admin)
+
+Pitanja se mogu dodavati/brisati uživo, bez ponovnog deploya. Novo pitanje se
+**inkrementalno** enkodira i odmah je pretraživo.
+
+- Postavi `ADMIN_TOKEN` (inače su admin endpointi isključeni, vraćaju 503).
+- Za produkciju: `QA_STORE=firestore` + Google kredencijali (`GOOGLE_APPLICATION_CREDENTIALS`).
+  Lokalni JSON (`qa_data.json`) nije trajan na Cloud Run/Railway.
+- **Sučelje:** otvori `admin.html` (npr. na Firebase Hostingu), upiši token i dodavaj
+  pitanja pojedinačno ili **bulk uvozom** JSON datoteke / paste-a.
+- **API:** `GET/POST /admin/qa`, `DELETE /admin/qa/{id}`, `POST /admin/qa/bulk`
+  uz zaglavlje `X-Admin-Token`.
+
+```
+# pojedinačno
+curl -X POST https://<backend>/admin/qa \
+  -H "X-Admin-Token: $ADMIN_TOKEN" -H "Content-Type: application/json" \
+  -d '{"question":"...","answer":"...","paraphrases":["..."]}'
+
+# bulk (cijeli batch se enkodira odjednom; all-or-nothing validacija, max 2000)
+curl -X POST https://<backend>/admin/qa/bulk \
+  -H "X-Admin-Token: $ADMIN_TOKEN" -H "Content-Type: application/json" \
+  -d '{"items":[{"question":"...","answer":"..."}, {"question":"...","answer":"..."}]}'
+```
+
+Napomene:
+- **Sigurnost:** token putuje iz preglednika i čuva se u `localStorage` — dovoljno za
+  interni alat, ali nije jaka autentikacija. Drži `admin.html` na privatnoj adresi.
+- **Cold start uz Firestore:** podaci se pri startu učitavaju iz Firestorea, pa se
+  embeddingi ponovno računaju (cache iz imagea se ne poklapa). Bezbolno uz uvijek
+  toplu instancu (Railway); uz scale-to-zero povećava cold start.
 
 ## Deploy (Google Cloud Run)
 

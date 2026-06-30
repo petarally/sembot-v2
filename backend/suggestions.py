@@ -20,14 +20,14 @@ _GENERAL_QUESTIONS = [
 
 
 class SuggestionEngine:
-    def __init__(self, qa_pairs: list[dict], index: SemanticIndex):
-        self.qa_pairs = qa_pairs
+    def __init__(self, index: SemanticIndex):
         self.index = index
 
     def next_questions(self, qa_index: int, k: int = 3) -> list[str]:
         """Do k prijedloga: najsličnija pitanja, pa pričuvna ako ih nema dovoljno."""
-        current = self.qa_pairs[qa_index]["question"]
-        suggested = [self.qa_pairs[i]["question"] for i in self.index.similar_questions(qa_index, k)]
+        qa_pairs = self.index.qa_pairs
+        current = qa_pairs[qa_index]["question"]
+        suggested = [qa_pairs[i]["question"] for i in self.index.similar_questions(qa_index, k)]
 
         for question in _GENERAL_QUESTIONS:
             if len(suggested) >= k:

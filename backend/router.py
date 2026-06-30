@@ -11,19 +11,49 @@ from .config import (
     RERANK_THRESHOLD,
     TOP_K,
 )
-from .data import load_qa_pairs
 from .reranker import Reranker
 from .search import Candidate, SemanticIndex
+from .store import get_store
 from .suggestions import SuggestionEngine
 
 
 class ChatbotRouter:
     def __init__(self):
-        self.qa_pairs = load_qa_pairs()
-        self.index = SemanticIndex(self.qa_pairs)
+        self.store = get_store()
+        self.index = SemanticIndex(self.store.load())
         self.reranker = Reranker()
-        self.suggestions = SuggestionEngine(self.qa_pairs, self.index)
+        self.suggestions = SuggestionEngine(self.index)
         print(f"Router spreman: {len(self.qa_pairs)} QA parova.")
+
+    @property
+    def qa_pairs(self) -> list[dict]:
+        """Aktualni QA parovi (indeks je izvor istine u memoriji)."""
+        return self.index.qa_pairs
+
+    # ----------------------------------------------------------- admin izmjene
+    def add_qa(self, question: str, answer: str, paraphrases: list[str] | None = None) -> dict:
+        """Dodaj pitanje: spremi u store + inkrementalno u indeks (bez restarta)."""
+        item = self.store.add(
+            {"question": question, "answer": answer, "paraphrases": paraphrases or []}
+        )
+        self.index.add_qa(item)
+        return item
+
+    def add_qa_bulk(self, items: list[dict]) -> list[dict]:
+        """Dodaj više pitanja odjednom: jedan upis u store + jedno enkodiranje."""
+        new_items = self.store.add_many(items)
+        self.index.add_many(new_items)
+        return new_items
+
+    def delete_qa(self, qa_id: str) -> bool:
+        """Obriši pitanje iz storea i ponovno izgradi indeks iz svježeg stanja."""
+        if not self.store.delete(qa_id):
+            return False
+        self.index.rebuild(self.store.load())
+        return True
+
+    def list_qa(self) -> list[dict]:
+        return self.qa_pairs
 
     async def get_response(self, query: str) -> dict:
         print(f"Obrada upita: '{query}'")

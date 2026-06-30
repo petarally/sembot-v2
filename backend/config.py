@@ -29,3 +29,10 @@ RERANK_THRESHOLD = float(os.environ.get("RERANK_THRESHOLD", 0.50))
 RERANK_HIGH_CONF = float(os.environ.get("RERANK_HIGH_CONF", 0.80))
 # Minimalna razlika top-1 i top-2 da bismo odgovorili kad nismo "sigurni".
 RERANK_MARGIN = float(os.environ.get("RERANK_MARGIN", 0.15))
+
+# --- Pohrana podataka i admin ----------------------------------------------
+# "json" = lokalna datoteka (razvoj); "firestore" = Firebase Firestore (produkcija).
+QA_STORE = os.environ.get("QA_STORE", "json")
+FIRESTORE_COLLECTION = os.environ.get("FIRESTORE_COLLECTION", "qa_pairs")
+# Token za admin endpointe. Prazno => admin je isključen (sigurnosni default).
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "")

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Fakultetski Chatbot</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+      h1 { font-size: 1.4rem; }
+      label { display: block; margin: 0.6rem 0 0.2rem; font-weight: 600; font-size: 0.9rem; }
+      input, textarea { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; font: inherit; box-sizing: border-box; }
+      textarea { min-height: 4rem; }
+      button { padding: 0.5rem 1rem; border: 0; border-radius: 6px; background: #0a5; color: #fff; font: inherit; cursor: pointer; }
+      button.del { background: #c33; padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+      .card { border: 1px solid #eee; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+      .qa { border-bottom: 1px solid #eee; padding: 0.6rem 0; display: flex; justify-content: space-between; gap: 1rem; }
+      .qa span { flex: 1; }
+      #status { padding: 0.5rem; border-radius: 6px; margin: 0.5rem 0; display: none; }
+      #status.ok { background: #e7f7ee; color: #0a5; display: block; }
+      #status.err { background: #fdeaea; color: #c33; display: block; }
+      small { color: #777; }
+    </style>
+  </head>
+  <body>
+    <h1>Admin — punjenje baze pitanja</h1>
+
+    <div class="card">
+      <label for="token">Admin token</label>
+      <input id="token" type="password" placeholder="ADMIN_TOKEN" />
+      <small>Sprema se lokalno u pregledniku.</small>
+    </div>
+
+    <div id="status"></div>
+
+    <div class="card">
+      <h2 style="font-size:1.1rem">Dodaj pitanje</h2>
+      <label for="question">Pitanje</label>
+      <input id="question" type="text" />
+      <label for="answer">Odgovor</label>
+      <textarea id="answer"></textarea>
+      <label for="paraphrases">Parafraze (jedna po retku, opcionalno)</label>
+      <textarea id="paraphrases"></textarea>
+      <p><button id="addBtn">Dodaj</button></p>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:1.1rem">Bulk uvoz</h2>
+      <small>
+        JSON: niz <code>[{"question","answer","paraphrases"?}, ...]</code> ili
+        <code>{"qa_pairs":[...]}</code>. Sve ili ništa — ako je ijedan unos neispravan, ništa se ne sprema.
+      </small>
+      <label for="bulkFile">Učitaj .json datoteku</label>
+      <input id="bulkFile" type="file" accept=".json,application/json" />
+      <label for="bulkText">…ili zalijepi JSON</label>
+      <textarea id="bulkText" placeholder='[{"question":"...","answer":"..."}]'></textarea>
+      <p><button id="bulkBtn">Uvezi</button></p>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:1.1rem">Postojeća pitanja (<span id="count">0</span>)</h2>
+      <div id="list"></div>
+    </div>
+
+    <script src="static/js/config.js"></script>
+    <script src="static/js/admin.js"></script>
+  </body>
+</html>

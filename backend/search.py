@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import threading
 from dataclasses import dataclass
 
 import numpy as np
@@ -26,9 +27,14 @@ class Candidate:
 
 class SemanticIndex:
     def __init__(self, qa_pairs: list[dict]):
-        self.qa_pairs = qa_pairs
         print(f"Učitavanje embedding modela: {EMBED_MODEL}")
         self.encoder = SentenceTransformer(EMBED_MODEL)
+        self._lock = threading.RLock()  # štiti izmjene indeksa za vrijeme pretrage
+        self._build(qa_pairs)
+
+    def _build(self, qa_pairs: list[dict]) -> None:
+        """(Pre)izgradi cijeli indeks iz danih QA parova."""
+        self.qa_pairs = qa_pairs
         # Svako pitanje može imati više formulacija (parafraza) radi boljeg recalla.
         self.utterances, self.utterance_to_qa = self._collect_utterances(qa_pairs)
         self.embeddings = self._build_or_load_embeddings()
@@ -36,16 +42,23 @@ class SemanticIndex:
         self.qa_question_rows = self._index_primary_questions()
 
     @staticmethod
-    def _collect_utterances(qa_pairs: list[dict]) -> tuple[list[str], list[int]]:
+    def _qa_utterances(qa: dict) -> list[str]:
+        """Deduplicirane formulacije jednog QA para: [pitanje, *parafraze]."""
+        utterances, seen = [], set()
+        for variant in [qa["question"], *qa.get("paraphrases", [])]:
+            if variant and variant not in seen:
+                seen.add(variant)
+                utterances.append(variant)
+        return utterances
+
+    @classmethod
+    def _collect_utterances(cls, qa_pairs: list[dict]) -> tuple[list[str], list[int]]:
         """Spljošti sva pitanja + parafraze u jednu listu uz mapu na QA par."""
         utterances, utterance_to_qa = [], []
         for qa_index, qa in enumerate(qa_pairs):
-            seen = set()
-            for variant in [qa["question"], *qa.get("paraphrases", [])]:
-                if variant and variant not in seen:
-                    seen.add(variant)
-                    utterances.append(variant)
-                    utterance_to_qa.append(qa_index)
+            for utterance in cls._qa_utterances(qa):
+                utterances.append(utterance)
+                utterance_to_qa.append(qa_index)
         return utterances, utterance_to_qa
 
     def _config_hash(self) -> str:
@@ -98,27 +111,65 @@ class SemanticIndex:
         """Matrica embeddinga primarnih pitanja, poredana po qa_index."""
         return self.embeddings[self.qa_question_rows]
 
+    # ----------------------------------------------------------- izmjene uživo
+    def add_qa(self, qa: dict) -> None:
+        """Dodaj jedan QA par, inkrementalno (bez rebuilda)."""
+        self.add_many([qa])
+
+    def add_many(self, qa_list: list[dict]) -> None:
+        """Dodaj više QA parova odjednom; enkodira cijeli batch jednim pozivom."""
+        if not qa_list:
+            return
+        with self._lock:
+            new_utterances, new_map, primary_rows = [], [], []
+            for qa in qa_list:
+                qa_index = len(self.qa_pairs)
+                self.qa_pairs.append(qa)
+                utterances = self._qa_utterances(qa)
+                # primarno pitanje = prva formulacija ovog para
+                primary_rows.append(len(self.utterances) + len(new_utterances))
+                new_utterances.extend(utterances)
+                new_map.extend([qa_index] * len(utterances))
+
+            passages = [PASSAGE_PREFIX + u for u in new_utterances]
+            new_emb = np.atleast_2d(
+                self.encoder.encode(passages, normalize_embeddings=True)
+            ).astype(np.float32)
+
+            self.utterances.extend(new_utterances)
+            self.utterance_to_qa.extend(new_map)
+            self.embeddings = np.vstack([self.embeddings, new_emb])
+            self.qa_question_rows = np.append(self.qa_question_rows, primary_rows)
+
+    def rebuild(self, qa_pairs: list[dict]) -> None:
+        """Ponovno izgradi cijeli indeks (npr. nakon brisanja)."""
+        with self._lock:
+            self._build(qa_pairs)
+
+    # --------------------------------------------------------------- čitanje
     def similar_questions(self, qa_index: int, k: int) -> list[int]:
         """Vrati k qa_indexa najsličnijih danom pitanju (bez njega samog)."""
-        target = self.embeddings[self.qa_question_rows[qa_index]]
-        sims = self.question_embeddings @ target
-        order = np.argsort(-sims)
-        return [int(i) for i in order if int(i) != qa_index][:k]
+        with self._lock:
+            target = self.embeddings[self.qa_question_rows[qa_index]]
+            sims = self.question_embeddings @ target
+            order = np.argsort(-sims)
+            return [int(i) for i in order if int(i) != qa_index][:k]
 
     def search(self, query: str, top_k: int) -> list[Candidate]:
         """Vrati do top_k jedinstvenih QA parova, poredanih po cosine sličnosti."""
         query_vec = self.encoder.encode(
             QUERY_PREFIX + query, normalize_embeddings=True
         ).astype(np.float32)
-        sims = self.embeddings @ query_vec  # normalizirani vektori -> dot = cosine
 
-        candidates, seen = [], set()
-        for utterance_index in np.argsort(-sims):
-            qa_index = self.utterance_to_qa[int(utterance_index)]
-            if qa_index in seen:
-                continue
-            seen.add(qa_index)
-            candidates.append(Candidate(qa_index, float(sims[int(utterance_index)])))
-            if len(candidates) >= top_k:
-                break
-        return candidates
+        with self._lock:
+            sims = self.embeddings @ query_vec  # normalizirani vektori -> dot = cosine
+            candidates, seen = [], set()
+            for utterance_index in np.argsort(-sims):
+                qa_index = self.utterance_to_qa[int(utterance_index)]
+                if qa_index in seen:
+                    continue
+                seen.add(qa_index)
+                candidates.append(Candidate(qa_index, float(sims[int(utterance_index)])))
+                if len(candidates) >= top_k:
+                    break
+            return candidates

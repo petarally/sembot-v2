@@ -3,3 +3,4 @@ uvicorn==0.25.0
 pydantic>=2.5.3,<3.0.0
 sentence-transformers>=2.7.0
 numpy>=1.21.0
+google-cloud-firestore>=2.16.0
