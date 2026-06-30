@@ -1,4 +1,4 @@
-.PHONY: setup run-backend run-frontend run clean
+.PHONY: setup run-backend run-frontend run clean check-data
 
 # Detect operating system
 ifeq ($(OS),Windows_NT)
@@ -36,6 +36,10 @@ run:
 	@bash -c "cd frontend && ../$(VENV_PYTHON) -m http.server 8080 &"
 	@echo "Serveri pokrenuti. Pritisnite Ctrl+C za zaustavljanje."
 	@bash -c "read -p ''"
+
+# Provjera kvalitete podataka (validacija + sumnjivi duplikati)
+check-data:
+	$(VENV_PYTHON) -m backend.check_data
 
 # Brisanje virtualnog okruženja
 clean:

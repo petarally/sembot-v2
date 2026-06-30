@@ -32,6 +32,8 @@ class SemanticIndex:
         # Svako pitanje može imati više formulacija (parafraza) radi boljeg recalla.
         self.utterances, self.utterance_to_qa = self._collect_utterances(qa_pairs)
         self.embeddings = self._build_or_load_embeddings()
+        # Redak embeddinga primarnog pitanja za svaki QA par (prva formulacija).
+        self.qa_question_rows = self._index_primary_questions()
 
     @staticmethod
     def _collect_utterances(qa_pairs: list[dict]) -> tuple[list[str], list[int]]:
@@ -82,6 +84,26 @@ class SemanticIndex:
         except Exception as e:
             print(f"Spremanje cachea nije uspjelo ({e}); nastavljam bez cachea.")
         return embeddings
+
+    def _index_primary_questions(self) -> np.ndarray:
+        """Za svaki QA par zapamti redak embeddinga njegovog primarnog pitanja."""
+        rows = [-1] * len(self.qa_pairs)
+        for row, qa_index in enumerate(self.utterance_to_qa):
+            if rows[qa_index] == -1:  # prva formulacija = samo pitanje
+                rows[qa_index] = row
+        return np.array(rows)
+
+    @property
+    def question_embeddings(self) -> np.ndarray:
+        """Matrica embeddinga primarnih pitanja, poredana po qa_index."""
+        return self.embeddings[self.qa_question_rows]
+
+    def similar_questions(self, qa_index: int, k: int) -> list[int]:
+        """Vrati k qa_indexa najsličnijih danom pitanju (bez njega samog)."""
+        target = self.embeddings[self.qa_question_rows[qa_index]]
+        sims = self.question_embeddings @ target
+        order = np.argsort(-sims)
+        return [int(i) for i in order if int(i) != qa_index][:k]
 
     def search(self, query: str, top_k: int) -> list[Candidate]:
         """Vrati do top_k jedinstvenih QA parova, poredanih po cosine sličnosti."""

@@ -22,7 +22,7 @@ class ChatbotRouter:
         self.qa_pairs = load_qa_pairs()
         self.index = SemanticIndex(self.qa_pairs)
         self.reranker = Reranker()
-        self.suggestions = SuggestionEngine(self.qa_pairs)
+        self.suggestions = SuggestionEngine(self.qa_pairs, self.index)
         print(f"Router spreman: {len(self.qa_pairs)} QA parova.")
 
     async def get_response(self, query: str) -> dict:
@@ -62,7 +62,7 @@ class ChatbotRouter:
         qa = self.qa_pairs[candidate.qa_index]
         return {
             "text": qa["answer"],
-            "suggested_questions": self.suggestions.next_questions(qa["question"]),
+            "suggested_questions": self.suggestions.next_questions(candidate.qa_index),
         }
 
     def _fallback(self) -> dict:

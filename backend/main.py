@@ -45,6 +45,15 @@ async def chat_endpoint(request: ChatRequest):
     # Legacy support for string responses
     return ChatResponse(answer=response)
 
+# Health endpoint za Cloud Run / Railway probe
+@app.get("/health")
+async def health():
+    return {
+        "status": "ok",
+        "qa_pairs": len(chatbot_router.qa_pairs),
+        "reranker_ready": chatbot_router.reranker.available,
+    }
+
 # Root endpoint za provjeru da API radi
 @app.get("/", response_class=HTMLResponse)
 async def root():

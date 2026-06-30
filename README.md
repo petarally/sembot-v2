@@ -80,6 +80,17 @@ dodatne formulacije za bolji recall:
 Embeddingi se računaju jednom i keširaju u `backend/data/.embeddings_cache.npz`;
 cache se automatski osvježi kad se promijene podaci, model ili prefiksi.
 
+Podaci se validiraju pri učitavanju (prazni/dupli unosi ruše start s jasnom
+porukom). Prije rasta baze provjerite sumnjivo slične parove (duplikate/konflikte):
+
+```
+make check-data            # prag 0.90
+python -m backend.check_data 0.85   # stroži prag
+```
+
+Health provjera (za Cloud Run / Railway probe): `GET /health` vraća status,
+broj QA parova i je li reranker već učitan.
+
 ## Konfiguracija (env varijable)
 
 | Varijabla | Default | Opis |
