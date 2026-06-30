@@ -16,7 +16,7 @@ RERANKER_MODEL = os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 
 # --- Pretraga ---------------------------------------------------------------
 # Koliko kandidata bi-encoder prosljeđuje rerankeru.
-TOP_K = int(os.environ.get("TOP_K", 15))
+TOP_K = int(os.environ.get("TOP_K", 8))
 
 # --- Pragovi odluke ---------------------------------------------------------
 # POČETNE vrijednosti; OBAVEZNO kalibrirati na testnom skupu stvarnih upita.

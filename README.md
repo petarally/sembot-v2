@@ -92,3 +92,23 @@ cache se automatski osvježi kad se promijene podaci, model ili prefiksi.
 
 > Pragovi su početne vrijednosti — kalibrirajte ih na testnom skupu stvarnih upita.
 > Pri prvom pokretanju modeli se preuzimaju (e5-base ~440 MB, reranker ~2.3 GB).
+
+## Deploy (Google Cloud Run)
+
+`Dockerfile` zapeče modele i embedding cache u image, pa cold start ne preuzima
+ništa s interneta. Reranker se učitava u pozadini, pa prvi upit ne čeka cijeli model.
+
+```
+gcloud run deploy sembot-backend \
+  --source . \
+  --memory 4Gi --cpu 2 --cpu-boost \
+  --port 8080 \
+  --region europe-west1 \
+  --allow-unauthenticated
+```
+
+- `--memory 4Gi` — modeli traže prostora u RAM-u (inače OOM pri startu).
+- `--cpu-boost` — više CPU-a tijekom starta = brže učitavanje modela.
+- Bez `--min-instances` (scale-to-zero): nema fiksnog troška, ali prvi upit nakon
+  mirovanja čeka ~5–10 s da se digne kontejner. Za nulti cold start dodajte
+  `--min-instances 1` (stalni trošak jedne instance).

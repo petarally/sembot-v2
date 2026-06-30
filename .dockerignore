@@ -1,0 +1,10 @@
+frontend/
+venv/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.git/
+.gitignore
+*.md
+backend/data/.embeddings_cache.npz
