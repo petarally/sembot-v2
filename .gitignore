@@ -1,0 +1,40 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- Virtualno okruženje (Makefile koristi "venv") ---
+venv/
+.venv/
+env/
+
+# --- Okolinske varijable / tajne ---
+.env
+.env.*
+!.env.example
+
+# --- Izvedeni embedding cache (ponovno se računa iz qa_data.json) ---
+backend/data/.embeddings_cache.npz
+
+# --- Lokalni cache modela (ako se postavi HF_HOME u repo) ---
+models/
+.cache/
+
+# --- Firebase / deploy ---
+.firebase/
+firebase-debug.log
+*-debug.log
+.gcloudignore
+
+# --- IDE / editori ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS ---
+.DS_Store
+Thumbs.db
