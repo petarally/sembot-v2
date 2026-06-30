@@ -1,42 +1,6 @@
 {
   "qa_pairs": [
     {
-      "question": "Koji su rokovi za prijavu ispita?",
-      "answer": "Rokovi za prijavu ispita su najkasnije 3 dana prije termina ispita putem studomata."
-    },
-    {
-      "question": "Kada počinje akademska godina?",
-      "answer": "Za detaljni pregled svih važnih datuma i događaja akademske godine, pogledajte akademski kalendar na: https://www.unipu.hr/akademski_kalendar"
-    },
-    {
-      "question": "Koliko iznose ECTS bodovi za završetak studija?",
-      "answer": "Za završetak preddiplomskog studija potrebno je ostvariti 180 ECTS bodova, a za diplomski studij dodatnih 120 ECTS bodova."
-    },
-    {
-      "question": "Kako mogu kontaktirati studentsku službu?",
-      "answer": "Studentsku službu možete kontaktirati putem emaila ured-za-studente@unipu.hr ili telefonom na broj +385 52 377 000 radnim danom od 10-14h."
-    },
-    {
-      "question": "Koji su uvjeti za upis više godine?",
-      "answer": "Za upis više godine studija potrebno je ostvariti minimalno 50 ECTS bodova iz tekuće akademske godine."
-    },
-    {
-      "question": "Gdje mogu pronaći raspored predavanja?",
-      "answer": "Raspored predavanja možete pronaći na službenoj web stranici fakulteta u sekciji 'Nastava' ili na oglasnoj ploči fakulteta."
-    },
-    {
-      "question": "Kako se prijavljuje završni/diplomski rad?",
-      "answer": "Završni/diplomski rad prijavljuje se u dogovoru s mentorom ispunjavanjem obrasca dostupnog na web stranici fakulteta i predajom u studentsku službu."
-    },
-    {
-      "question": "Koji su načini plaćanja školarine?",
-      "answer": "Školarinu je moguće platiti jednokratno uz 5% popusta ili u 3 rate prema terminima navedenim na web stranici fakulteta."
-    },
-    {
-      "question": "Kako dobiti potvrdu o studiranju?",
-      "answer": "Potvrdu o studiranju možete dobiti u studentskoj službi uz predočenje indeksa ili je možete samostalno ispisati putem studomata."
-    },
-    {
       "question": "Koje je službeno ime Sveučilišta u Puli?",
       "answer": "Službeno ime je Sveučilište Jurja Dobrile u Puli."
     },
@@ -45,88 +9,516 @@
       "answer": "Sveučilište Jurja Dobrile nalazi se na adresi Zagrebačka 30, 52100 Pula, Hrvatska."
     },
     {
-      "question": "Kako mogu kontaktirati Sveučilište u Puli?",
-      "answer": "Sveučilište možete kontaktirati telefonom na +385 52 377 000, faxom na +385 216 416 ili e-mailom na ured@unipu.hr."
-    },
-    {
       "question": "Koja je web stranica Sveučilišta Jurja Dobrile?",
-      "answer": "Službena web stranica Sveučilišta je www.unipu.hr."
+      "answer": "Službena web stranica Sveučilišta je www.unipu.hr. Prijave za upis idu putem www.postani-student.hr (prijediplomski) odnosno diplomski.studij.hr (diplomski)."
     },
     {
-      "question": "Kako mogu kontaktirati Ured za studente?",
-      "answer": "Ured za studente možete kontaktirati e-mailom na ured-za-studente@unipu.hr ili telefonom na 052/377-006 ili 052/377-010."
+      "question": "Koliko ECTS bodova nosi prijediplomski studij?",
+      "answer": "Većina prijediplomskih studija traje 3 godine i nosi 180 ECTS bodova, dok studiji na Muzičkoj akademiji traju 4 godine i nose 240 ECTS bodova. Integrirani prijediplomski i diplomski studiji (npr. Učiteljski studij) traju 5 godina i nose 300 ECTS bodova."
     },
     {
-      "question": "Gdje mogu pronaći akademski kalendar?",
-      "answer": "Akademski kalendar možete pronaći na službenim stranicama Sveučilišta: https://www.unipu.hr/akademski_kalendar."
+      "question": "Koliko traje diplomski studij i koliko ECTS bodova nosi?",
+      "answer": "Većina diplomskih studija traje 2 godine (120 ECTS), dok diplomski studiji na Muzičkoj akademiji traju 1 godinu (60 ECTS)."
     },
     {
-      "question": "Koje fakultete ima Sveučilište Jurja Dobrile u Puli?",
-      "answer": "Sveučilište ima nekoliko fakulteta uključujući: Fakultet ekonomije i turizma, Fakultet informatike, Fakultet prirodnih znanosti, Fakultet za odgojne i obrazovne znanosti, Filozofski fakultet, Medicinski fakultet, Muzičku akademiju, Tehnički fakultet te studij Dizajna i audiovizualnih komunikacija."
+      "question": "Koje fakultete i sastavnice ima Sveučilište Jurja Dobrile u Puli?",
+      "answer": "Sveučilište čine: Fakultet ekonomije i turizma 'Dr. Mijo Mirković' (FET), Filozofski fakultet (FFPU), Fakultet za odgojne i obrazovne znanosti (FOOZ), Fakultet informatike (FIPU), Tehnički fakultet (TFPU), Fakultet prirodnih znanosti (FPZ), Medicinski fakultet (MFPU), Muzička akademija u Puli (MAPU) te studij Dizajna i audiovizualnih komunikacija (DAK)."
     },
     {
-      "question": "Koji su uvjeti za upis na Fakultet informatike?",
-      "answer": "Za upis na Fakultet informatike potrebno je minimalno 60% iz matematike na državnoj maturi. Vrednuju se rezultati iz matematike, informatike i engleskog jezika."
+      "question": "Koji prijediplomski studiji se nude na Fakultetu ekonomije i turizma?",
+      "answer": "Fakultet ekonomije i turizma 'Dr. Mijo Mirković' nudi prijediplomske studije: Primijenjena ekonomija, Poslovna ekonomija i Kultura i turizam."
     },
     {
-      "question": "Koji studijski programi se nude na Medicinskom fakultetu?",
-      "answer": "Medicinski fakultet nudi Integrirani preddiplomski i diplomski sveučilišni studij Medicine te Diplomski sveučilišni studij Sestrinstvo."
+      "question": "Koji prijediplomski studiji se nude na Filozofskom fakultetu?",
+      "answer": "Filozofski fakultet nudi jednopredmetne studije Hrvatski jezik i književnost, Povijest, Japanski jezik i kulturu, Talijanski jezik i književnost i Jezičnu i interkulturalnu medijaciju, kombinirani studij Kultura i turizam i Talijanski jezik i kultura, te dvopredmetne studije Hrvatski jezik i književnost, Povijest, Latinski jezik i rimsku književnost, Talijanski jezik i književnost, Japanski jezik i kulturu, Arheologiju i Engleski jezik i književnost."
     },
     {
-      "question": "Kako se mogu prijaviti za studentsku anketu?",
-      "answer": "Jedinstvena studentska anketa dostupna je na: https://limesurvey.srce.hr/299119?lang=hr."
+      "question": "Koji prijediplomski studiji se nude na Fakultetu za odgojne i obrazovne znanosti?",
+      "answer": "FOOZ nudi prijediplomski studij Rani i predškolski odgoj i obrazovanje, na hrvatskom i na talijanskom jeziku, te integrirani prijediplomski i diplomski Učiteljski studij, na hrvatskom i na talijanskom jeziku."
     },
     {
-      "question": "Koji su studijski programi na Fakultetu ekonomije i turizma?",
-      "answer": "Fakultet ekonomije i turizma nudi programe: Poslovna ekonomija, Ekonomija, Marketing, Financijski management i Turizam."
+      "question": "Koji studij se nudi na Fakultetu informatike?",
+      "answer": "Fakultet informatike nudi prijediplomski i diplomski sveučilišni studij Informatika, uključujući i online varijantu studija na hrvatskom jeziku."
     },
     {
-      "question": "Kakve su mogućnosti za karijeru nakon Fakulteta informatike?",
-      "answer": "Diplomirani studenti Fakulteta informatike rade kao programeri, sistemski inženjeri, podatkovni znanstvenici, stručnjaci za sigurnost ili IT konzultanti."
+      "question": "Koji studiji se nude na Tehničkom fakultetu?",
+      "answer": "Tehnički fakultet nudi stručni prijediplomski studij Proizvodno strojarstvo i sveučilišni prijediplomski studij Računarstvo, a na diplomskoj razini Strojarstvo i Računarstvo."
     },
     {
-      "question": "Koji su uvjeti za upis na Medicinski fakultet?",
-      "answer": "Za upis na Medicinski fakultet potrebno je minimalno 70% iz biologije i kemije na državnoj maturi. Provodi se i dodatni prijemni ispit."
+      "question": "Koji studij se nudi na Fakultetu prirodnih znanosti?",
+      "answer": "Fakultet prirodnih znanosti nudi prijediplomski studij Znanost o moru."
     },
     {
-      "question": "Koji su studijski programi dostupni na Muzičkoj akademiji?",
-      "answer": "Muzička akademija nudi programe: Glazbena pedagogija, Klasična harmonika, Solo pjevanje, Klavir i Gitara."
+      "question": "Koji studiji se nude na Medicinskom fakultetu?",
+      "answer": "Medicinski fakultet nudi stručni prijediplomski studij Sestrinstvo te diplomski studij Sestrinstvo."
     },
     {
-      "question": "Koji su uvjeti za upis u prvu godinu diplomskih studija?",
-      "answer": "Za upis u prvu godinu diplomskih studija potrebno je imati završen odgovarajući preddiplomski studij te ispuniti sve uvjete navedene u natječaju za upis."
+      "question": "Koji studijski programi su dostupni na Muzičkoj akademiji?",
+      "answer": "Muzička akademija u Puli nudi prijediplomske i diplomske studije: Glazbena pedagogija, Klasična harmonika, Solo pjevanje i Klavir."
     },
     {
-      "question": "Kako se prijaviti za online upise?",
-      "answer": "Prijava za online upise vrši se putem službene aplikacije Sveučilišta, gdje je potrebno unijeti osobne podatke i priložiti traženu dokumentaciju."
+      "question": "Postoji li studij Dizajna na Sveučilištu u Puli?",
+      "answer": "Da, Sveučilište nudi prijediplomski i diplomski studij Dizajn i audiovizualne komunikacije (DAK)."
     },
     {
-      "question": "Koji su rokovi za upis u akademsku godinu 2024./2025.?",
-      "answer": "Rokovi za upis objavljuju se na službenim stranicama Sveučilišta i razlikuju se ovisno o studijskom programu i razini studija. Preporučuje se redovito pratiti obavijesti na web stranici."
+      "question": "Koliko ukupno upisnih mjesta nudi Sveučilište za prijediplomske i integrirane studije 2026./2027.?",
+      "answer": "Za akademsku godinu 2026./2027. ukupno je raspoloživo 1.396 upisnih mjesta na prijediplomskoj i integriranoj razini (872 redovita, 64 za strane državljane i 460 izvanrednih)."
     },
     {
-      "question": "Kako mogu saznati više o studijskim programima koje nudi Sveučilište?",
-      "answer": "Detaljne informacije o studijskim programima dostupne su na službenoj web stranici Sveučilišta, gdje su navedeni svi prijediplomski, diplomski i poslijediplomski programi."
+      "question": "Koliko ukupno upisnih mjesta nudi Sveučilište za diplomske studije 2026./2027.?",
+      "answer": "Za akademsku godinu 2026./2027. na diplomskim studijima raspoloživo je ukupno 963 upisna mjesta (526 redovitih, 62 za strane državljane i 375 izvanrednih)."
     },
     {
-      "question": "Postoje li mogućnosti obročne otplate školarine?",
-      "answer": "Da, Sveučilište omogućuje obročnu otplatu školarine. Detalji o uvjetima i načinu plaćanja dostupni su u rubrici 'Školarine i informacije o obročnoj otplati' na službenoj web stranici."
+      "question": "Kako se prijavljujem za upis na prijediplomski studij?",
+      "answer": "Upis na prijediplomski studij ostvaruje se prijavom putem Središnjeg prijavnog ureda (SPU) na www.postani-student.hr, uz položenu državnu maturu i plasman na rang-listu, za redoviti ili izvanredni studij."
     },
     {
-      "question": "Kako se mogu prijaviti za stipendiju?",
-      "answer": "Prijave za stipendije objavljuju se na službenim stranicama Sveučilišta. Potrebno je pratiti obavijesti i slijediti upute navedene u natječajima."
+      "question": "Kako se prijavljujem za upis na diplomski studij?",
+      "answer": "Prijava za diplomski studij vrši se putem portala diplomski.studij.hr, za redoviti ili izvanredni studij."
     },
     {
-      "question": "Koje su mogućnosti međunarodne razmjene za studente?",
-      "answer": "Sveučilište nudi različite programe međunarodne razmjene, uključujući Erasmus+ i CEEPUS. Detalji o prijavi i uvjetima dostupni su u rubrici 'Međunarodna suradnja' na web stranici."
+      "question": "Moraju li kandidati koji su srednju školu završili prije 2010. godine polagati državnu maturu?",
+      "answer": "Ne, kandidati koji su završili najmanje četverogodišnje srednje obrazovanje prije 2010. godine nemaju obvezu polaganja državne mature i ne dobivaju bodove koje ti ispiti donose."
     },
     {
-      "question": "Kako mogu pristupiti e-učenju?",
-      "answer": "Platforma za e-učenje dostupna je putem poveznice na službenoj web stranici Sveučilišta. Potrebno je koristiti dodijeljene korisničke podatke za pristup."
+      "question": "Kako se prijavljuju strani kandidati za upis?",
+      "answer": "Strani kandidati, uz standardnu dokumentaciju za prijavu, moraju dodatno poslati zahtjev za priznavanjem, koji se nalazi na njihovom osobnom profilu na Postani student, u rubrici 'Novosti'."
     },
     {
-      "question": "Što trebam učiniti ako želim prekinuti studij?",
-      "answer": "U slučaju prekida studija, potrebno je podnijeti zahtjev za ispisivanje iz studija nadležnoj studentskoj službi te vratiti sve posuđene materijale i podmiriti eventualne obveze prema Sveučilištu."
+      "question": "Ulaze li kandidati iz zemalja EU u kvotu za strane državljane?",
+      "answer": "Ne, kandidati iz zemalja EU ne ulaze u kvotu za strane državljane, već u kvotu za hrvatske državljane i izjednačeni su s kandidatima iz RH. Pri upisu moraju referadi dostaviti potvrdu o položenom nacionalnom ispitu iz hrvatskoga jezika na razini B2 (NCVVO). Isto vrijedi i za osobe iz Ukrajine pod privremenom zaštitom u RH."
+    },
+    {
+      "question": "Za koje studije se provode dodatne provjere posebnih vještina i sposobnosti?",
+      "answer": "Dodatne provjere provode se za sve studije Muzičke akademije, za Dizajn i audiovizualne komunikacije, te za Rani i predškolski odgoj i obrazovanje na talijanskom jeziku i Učiteljski studij na talijanskom jeziku (FOOZ)."
+    },
+    {
+      "question": "Koji je rok i trošak prijave za dodatne provjere DAK?",
+      "answer": "Prijava za dodatne provjere DAK vrši se elektronički, s rokovima 29. lipnja 2026. do 12 h (srpanjski rok) i 1. rujna 2026. do 12 h (rujanski rok). Trošak prijave iznosi 20,00 €."
+    },
+    {
+      "question": "Koji je rok i trošak prijave za dodatne provjere na Muzičkoj akademiji?",
+      "answer": "Prijava za dodatne provjere MAPU (Solo pjevanje, Glazbena pedagogija, Klasična harmonika, Klavir) vrši se do 29. lipnja 2026. (srpanjski rok) odnosno do 1. rujna 2026. (rujanski rok). Trošak prijave iznosi 40,00 €."
+    },
+    {
+      "question": "Kada su termini i objava rezultata dodatnih provjera na Muzičkoj akademiji?",
+      "answer": "Dodatne provjere MAPU održavaju se 3. i 4. srpnja 2026. (srpanjski rok) odnosno 4. rujna 2026. (rujanski rok), a rezultati se objavljuju isti dan. Žalbe se mogu podnijeti do 6. srpnja 2026. do 10 h (srpanjski rok) odnosno do 7. rujna 2026. do 10 h (rujanski rok)."
+    },
+    {
+      "question": "Koji je rok i trošak prijave za dodatne provjere FOOZ na talijanskom jeziku?",
+      "answer": "Prijava za dodatne provjere RPOO i Učiteljskog studija na talijanskom jeziku (FOOZ) vrši se na e-mail fooz-ured@unipu.hr, s rokovima 2. srpnja 2026. (srpanjski rok) i 3. rujna 2026. (rujanski rok). Trošak prijave iznosi 60,00 €."
+    },
+    {
+      "question": "Treba li dostaviti dokaz o zdravstvenoj sposobnosti za upis na FOOZ ili Sestrinstvo?",
+      "answer": "Da, kandidati koji ostvare pravo upisa na FOOZ ili Sestrinstvo moraju do 30. lipnja 2026. dostaviti potvrdu liječnika medicine rada (FOOZ) odnosno potvrdu liječnika školske medicine za redovite studente Sestrinstva ili medicine rada za izvanredne studente Sestrinstva, ne stariju od 6 mjeseci."
+    },
+    {
+      "question": "Tko ima pravo prednosti pri upisu izvan kvote?",
+      "answer": "Pravo prednosti upisa izvan kvote, uz prelazak bodovnog praga i ispunjenje eventualnih dodatnih provjera, imaju hrvatski branitelji i HRVI iz Domovinskog rata te njihova djeca, djeca civilnih i mirnodopskih invalida rata, kandidati s 60% i više tjelesnog oštećenja ili s 2.-4. stupnjem invaliditeta, te studenti iz sustava alternativne skrbi i samohrani roditelji."
+    },
+    {
+      "question": "Do kada treba dostaviti potvrde za poticajne mjere pri upisu?",
+      "answer": "Potvrde za poticajne mjere dostavljaju se na e-mail ured-za-studente@unipu.hr najkasnije do 30. lipnja 2026. za ljetni rok odnosno do 4. rujna 2026. za jesenski rok."
+    },
+    {
+      "question": "Kako se vrši upis nakon objave rang-lista?",
+      "answer": "Upis se vrši online nakon objave konačnih rang-lista prema rasporedu objavljenom na www.unipu.hr, te nije potrebno dolaziti u zgrade Sveučilišta. Uplate troškova upisa (60,00 €) i školarine vrše se putem online aplikacije za upise."
+    },
+    {
+      "question": "Kada se objavljuju konačne rang-liste za prijediplomske studije?",
+      "answer": "Konačne rang-liste za prijediplomske studije objavljuju se 15. srpnja 2026. (srpanjski rok) odnosno 16. rujna 2026. (rujanski rok)."
+    },
+    {
+      "question": "Kada se objavljuje konačna rang-lista za diplomske studije?",
+      "answer": "Konačna rang-lista za diplomske studije objavljuje se 30. rujna 2026."
+    },
+    {
+      "question": "Što su oportunitetni troškovi nepopunjenog upisnog mjesta?",
+      "answer": "Oportunitetni troškovi naplaćuju se kandidatima koji ostvare pravo upisa i dobiju upisni broj, ali se ne upišu na taj studij. Iznos je 1/3 godišnje participacije, a bez te uplate nije moguća ponovna prijava studija iste razine u NISpVU sustavu."
+    },
+    {
+      "question": "Koliki su rokovi prijave za diplomske studije?",
+      "answer": "Prijave za istovrsni diplomski studij traju od 1. srpnja do 29. rujna 2026. do 12 h, a za neistovrsni diplomski studij od 1. srpnja do 11. rujna 2026."
+    },
+    {
+      "question": "Mogu li se prijaviti za diplomski studij prije nego završim prijediplomski?",
+      "answer": "Da, prijavu je moguće, pa čak i preporučljivo, izvršiti i prije završetka prijediplomskog studija, uz naknadnu dostavu kompletne dokumentacije prema kalendaru prijava."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente na Fakultetu informatike?",
+      "answer": "Izvanredni studenti Informatike na FIPU-u plaćaju 665,00 € na prijediplomskoj i 665,00 € na diplomskoj razini, dok online studij Informatike (na hrvatskom jeziku) iznosi 2.000,00 € na prijediplomskoj i 3.000,00 € (odnosno 3.000,00 € za nastavni smjer) na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente na Medicinskom fakultetu?",
+      "answer": "Izvanredni studenti Sestrinstva plaćaju 1.230,00 € na stručnom prijediplomskom studiju i 1.595,00 € na diplomskom studiju."
+    },
+    {
+      "question": "Koliko iznosi naknada za prvi upis u prvu godinu studija?",
+      "answer": "Naknada za prvi upis u prvu godinu studija iznosi 60,00 €, dok upis u sljedeću akademsku godinu (koji nije prvi upis) iznosi 35,00 €."
+    },
+    {
+      "question": "Koliko košta izdavanje studentske iskaznice?",
+      "answer": "Izdavanje studentske iskaznice, uključujući zahtjev za novi Obrazac, košta 11,70 €, dok korištenje privremenog Obrasca košta 2,00 €."
+    },
+    {
+      "question": "Koliko košta duplikat diplome?",
+      "answer": "Duplikat diplome košta 50,00 €, a duplikat dopunske isprave o studiju 30,00 €."
+    },
+    {
+      "question": "Koliko košta priznavanje ECTS bodova ili razdoblja studija?",
+      "answer": "Priznavanje razdoblja studija ili ECTS bodova košta 30,00 €, dok priznavanje inozemne obrazovne kvalifikacije za upis na diplomske i poslijediplomske studije košta 60,00 €."
+    },
+    {
+      "question": "Mogu li se prijaviti Hrvati izvan Republike Hrvatske za upis?",
+      "answer": "Da, temeljem sporazuma sa Središnjim državnim uredom za Hrvate izvan RH dostupna su dva mjesta po sastavnici. Prijave se podnose putem web obrasca od 28. kolovoza do 5. rujna 2026., uz trošak prijave od 60,00 €."
+    },
+    {
+      "question": "Kako se plaćaju upisnina i školarina?",
+      "answer": "Od akademske godine 2025./2026. plaćanje se vrši putem web shopa; poveznice na plaćanje kandidati dobivaju u aplikaciji za upise na svoj e-mail. Kartično plaćanje moguće je svim vrstama kartica, dok je obročno plaćanje trenutno omogućeno PBZ, ZABA i Diners karticama."
+    },
+    {
+      "question": "Mogu li tražiti obročno plaćanje školarine zasebnim zahtjevom?",
+      "answer": "Ne, Sveučilište ne prima zasebne zahtjeve za obročnim plaćanjem - ono je automatski omogućeno svim kandidatima koji imaju odgovarajuću karticu (PBZ, ZABA ili Diners)."
+    },
+    {
+      "question": "Mogu li se upisati strani državljani pod istim uvjetima kao hrvatski?",
+      "answer": "Da, strani državljani upisuju se pod jednakim uvjetima kao hrvatski državljani; ograničenja su moguća samo za studije od interesa za nacionalnu sigurnost, poput vojnog ili policijskog obrazovanja."
+    },
+    {
+      "question": "Kako mogu kontaktirati studentsku službu (referadu)?",
+      "answer": "Za studije FET-a, Medicinskog fakulteta, Tehničkog fakulteta, Fakulteta prirodnih znanosti i Muzičke akademije referada se nalazi u zgradi FET-a, Preradovićeva 1/1, Pula, tel. 052/377-006 i 052/377-010. Za Fakultet informatike, Filozofski fakultet, FOOZ i DAK referada se nalazi u Sveučilišnom kampusu, Negrijeva 6, Pula, tel. 052/877-428 i 052/877-423. Oba ureda dostupna su i na e-mail ured-za-studente@unipu.hr."
+    },
+    {
+      "question": "Postoji li popust za studente s invaliditetom kod plaćanja školarine?",
+      "answer": "Da, studenti s utvrđenim najmanje 60% oštećenja organizma ili najmanje III. stupnjem oštećenja funkcionalnih sposobnosti plaćaju polovinu iznosa participacije u školarini."
+    },
+    {
+      "question": "Što se događa ako redoviti student ne ostvari dovoljno ECTS bodova?",
+      "answer": "Redoviti studenti koji ostvare 55 i više ECTS bodova (odnosno 30+ za studente s invaliditetom od 60% i više) imaju pravo na subvenciju školarine. Za 42-54 ostvarena ECTS boda plaća se participacija u visini umnoška broja nepoloženih ECTS bodova i cijene boda."
+    },
+    {
+      "question": "Plaća li se školarina za apsolventsku godinu?",
+      "answer": "Prvo produljenje studija (apsolventska godina) oslobođeno je plaćanja školarine. Kod ponovnog produljenja plaća se puni iznos, osim za kandidate kojima je preostao samo završni ili diplomski rad, koji plaćaju minimalnu participaciju u visini 6 ECTS bodova."
+    },
+    {
+      "question": "Gdje mogu pronaći službeni kalendar rokova za prijavu i upis?",
+      "answer": "Rokovi prijava putem SPU-a i diplomski.studij.hr prate službeni kalendar na studij.hr/kalendar, a u slučaju nejasnoća uvijek vrijede službene objave na www.unipu.hr."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za prijediplomski studij Primijenjena ekonomija na FET-u?",
+      "answer": "Prijediplomski studij Primijenjena ekonomija na FET-u ima 15 redovitih, 10 mjesta za strane državljane i 150 izvanrednih mjesta (ukupno 175), uz dodatnih 15 redovitih mjesta za online studij i poseban red od 10 stranih i 150 izvanrednih mjesta za online studij."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za prijediplomski studij Poslovna ekonomija na FET-u?",
+      "answer": "Prijediplomski studij Poslovna ekonomija na FET-u ima ukupno 260 mjesta (180 redovitih, 10 za strane državljane, 70 izvanrednih), raspoređenih na smjerove: Financije i računovodstvo (47 mjesta), Management i poduzetništvo (67), Marketing (62), Digitalna ekonomija (32) i Turizam (52)."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za prijediplomski studij Kultura i turizam na FET-u?",
+      "answer": "Prijediplomski studij Kultura i turizam na FET-u ima 60 redovitih, 5 mjesta za strane državljane i 20 izvanrednih mjesta, ukupno 85 mjesta."
+    },
+    {
+      "question": "Koliko je ukupno upisnih mjesta na Fakultetu ekonomije i turizma?",
+      "answer": "Fakultet ekonomije i turizma 'Dr. Mijo Mirković' ima ukupno 520 upisnih mjesta na prijediplomskoj razini: 255 redovitih, 25 za strane državljane i 240 izvanrednih."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za pojedine jednopredmetne studije na Filozofskom fakultetu?",
+      "answer": "Na prijediplomskoj razini Filozofskog fakulteta jednopredmetni studiji imaju sljedeće kvote: Hrvatski jezik i književnost 13 mjesta, Povijest 15, Japanski jezik i kultura 24, Talijanski jezik i književnost 14, te Jezična i interkulturalna medijacija 21 mjesto."
+    },
+    {
+      "question": "Hoće li se 2026./2027. izvoditi dvopredmetni studij Latinski jezik i rimska književnost?",
+      "answer": "Ne, dvopredmetni studij Latinski jezik i rimska književnost na Filozofskom fakultetu neće se izvoditi u akademskoj godini 2026./2027."
+    },
+    {
+      "question": "Koliko je ukupno upisnih mjesta na Filozofskom fakultetu?",
+      "answer": "Filozofski fakultet ima ukupno 249 upisnih mjesta na prijediplomskoj razini: 235 redovitih i 14 za strane državljane (nema izvanrednih mjesta)."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za Učiteljski studij na FOOZ-u?",
+      "answer": "Integrirani Učiteljski studij na hrvatskom jeziku ima 30 redovitih mjesta, a na talijanskom jeziku 10 redovitih i 1 mjesto za strane državljane, ukupno 40 redovitih i 1 strano mjesto."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za Rani i predškolski odgoj i obrazovanje (RPOO)?",
+      "answer": "RPOO na hrvatskom jeziku ima 40 redovitih i 60 izvanrednih mjesta (ukupno 100), a RPOO na talijanskom jeziku ima 10 redovitih mjesta."
+    },
+    {
+      "question": "Koliko je ukupno upisnih mjesta na FOOZ-u?",
+      "answer": "FOOZ ima ukupno 150 upisnih mjesta na prijediplomskoj i integriranoj razini: 90 redovitih, 1 za strane državljane i 60 izvanrednih."
+    },
+    {
+      "question": "Koliko je upisnih mjesta po smjerovima na Muzičkoj akademiji (prijediplomski)?",
+      "answer": "Na prijediplomskoj razini Muzičke akademije: Glazbena pedagogija ima 11 mjesta (10 redovitih, 1 strano), Klasična harmonika 2 redovita mjesta, Solo pjevanje 3 redovita mjesta i Klavir 3 redovita mjesta. Ukupno MAPU ima 19 mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na prijediplomskom studiju Informatika?",
+      "answer": "Redovni prijediplomski studij Informatika ima 60 mjesta (55 redovitih, 5 za strane državljane), dok online studij Informatika na hrvatskom jeziku ima 110 mjesta (10 stranih, 100 izvanrednih). Ukupno FIPU ima 170 prijediplomskih mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na Tehničkom fakultetu (prijediplomski)?",
+      "answer": "Proizvodno strojarstvo (stručni studij) ima 37 mjesta (20 redovitih, 2 strana, 15 izvanrednih), a Računarstvo (sveučilišni studij) ima 52 mjesta (35 redovitih, 2 strana, 15 izvanrednih). Ukupno TFPU ima 89 prijediplomskih mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na prijediplomskom studiju Znanost o moru?",
+      "answer": "Prijediplomski studij Znanost o moru na Fakultetu prirodnih znanosti ima ukupno 26 mjesta: 24 redovita i 2 za strane državljane."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na stručnom prijediplomskom studiju Sestrinstvo?",
+      "answer": "Stručni prijediplomski studij Sestrinstvo na Medicinskom fakultetu ima ukupno 83 mjesta: 50 redovitih, 3 za strane državljane i 30 izvanrednih."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na prijediplomskom studiju Dizajn i audiovizualne komunikacije?",
+      "answer": "Prijediplomski studij Dizajn i audiovizualne komunikacije ima 50 redovitih upisnih mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za diplomski studij Primijenjena ekonomija na FET-u?",
+      "answer": "Diplomski studij Primijenjena ekonomija na FET-u ima 15 redovitih, 10 za strane državljane i 110 izvanrednih mjesta (ukupno 135), uz dodatnih 15 redovitih mjesta za online studij i poseban red od 10 stranih i 110 izvanrednih mjesta za online studij."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za diplomski studij Poslovna ekonomija na FET-u?",
+      "answer": "Diplomski studij Poslovna ekonomija na FET-u ima ukupno 210 mjesta (125 redovitih, 10 za strane državljane, 75 izvanrednih), raspoređenih na smjerove Financije i računovodstvo (37), Management i poduzetništvo (47), Marketing (47) i Turizam i razvoj (47); smjer Informatički menadžment neće se izvoditi 2026./2027."
+    },
+    {
+      "question": "Hoće li se izvoditi diplomski smjer Informatički menadžment na FET-u?",
+      "answer": "Ne, diplomski smjer Informatički menadžment u sklopu Poslovne ekonomije neće se izvoditi u akademskoj godini 2026./2027."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za diplomski studij Kultura i turizam na FET-u?",
+      "answer": "Diplomski studij Kultura i turizam na FET-u ima 35 redovitih, 5 za strane državljane i 20 izvanrednih mjesta, ukupno 60 mjesta."
+    },
+    {
+      "question": "Koliko je ukupno upisnih mjesta na FET-u za diplomske studije?",
+      "answer": "Fakultet ekonomije i turizma ima ukupno 405 upisnih mjesta na diplomskoj razini: 175 redovitih, 25 za strane državljane i 205 izvanrednih."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za jednopredmetne diplomske studije na Filozofskom fakultetu?",
+      "answer": "Jednopredmetni diplomski studiji na Filozofskom fakultetu imaju ukupno 58 mjesta: Hrvatski jezik i književnost 13, Povijest 15, Talijanski jezik i književnost 13 i Japanologija 17 mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za diplomski studij Arheologija na Filozofskom fakultetu?",
+      "answer": "Dvopredmetni diplomski studij Arheologije ima 20 redovitih mjesta (ukupno 22), a počinje s izvođenjem nakon dobivanja dopusnice Ministarstva."
+    },
+    {
+      "question": "Koliko je upisnih mjesta za diplomski studij RPOO na FOOZ-u?",
+      "answer": "Diplomski studij RPOO na hrvatskom jeziku ima 40 redovitih mjesta. Diplomski studij RPOO na talijanskom jeziku formalno nema dodijeljenu kvotu (0 mjesta u natječaju), a nastava će se organizirati jedino ako se prijavom oformi grupa od najmanje 10 kandidata."
+    },
+    {
+      "question": "Koliko je upisnih mjesta po smjerovima na Muzičkoj akademiji (diplomski)?",
+      "answer": "Na diplomskoj razini Muzičke akademije: Glazbena pedagogija ima 8 mjesta, Klasična harmonika 6 mjesta, Solo pjevanje 2 mjesta i Klavir 3 mjesta. Ukupno MAPU diplomski ima 19 mjesta, sva redovita."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na diplomskom studiju Informatika?",
+      "answer": "Diplomski studij Informatika ima 35 mjesta (30 redovitih, 5 stranih), Nastavni smjer Informatika 15 mjesta (12 redovitih, 3 strana), dok online varijante (Informatika i Nastavni smjer Informatika na hrvatskom) imaju po 40 mjesta (5 stranih, 35 izvanrednih svaka). Ukupno FIPU diplomski ima 130 mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na diplomskim studijima Tehničkog fakulteta?",
+      "answer": "Diplomski studij Strojarstvo ima 37 mjesta (20 redovitih, 2 strana, 15 izvanrednih), a diplomski studij Računarstvo ima 52 mjesta (35 redovitih, 2 strana, 15 izvanrednih). Ukupno TFPU diplomski ima 89 mjesta."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na diplomskom studiju Sestrinstvo?",
+      "answer": "Diplomski studij Sestrinstvo na Medicinskom fakultetu ima ukupno 63 mjesta: 30 redovitih, 3 za strane državljane i 30 izvanrednih."
+    },
+    {
+      "question": "Koliko je upisnih mjesta na diplomskom studiju Dizajn i audiovizualne komunikacije?",
+      "answer": "Diplomski studij Dizajn i audiovizualne komunikacije ima 30 redovitih upisnih mjesta."
+    },
+    {
+      "question": "Treba li polagati dodatni ispit za diplomski studij Talijanski jezik i književnost?",
+      "answer": "Za diplomski studij Talijanski jezik i književnost (jednopredmetni ili dvopredmetni) potrebno je aktivno znanje talijanskog jezika na razini B2-C1; kandidati koji nisu završili odgovarajući prijediplomski studij talijanskog pristupaju provjeri znanja na razini B2."
+    },
+    {
+      "question": "Koji je rok prijave za dodatne provjere Japanologije na diplomskoj razini?",
+      "answer": "Kandidati za diplomski studij Japanologije koji nisu završili prijediplomski studij japanologije prijavljuju se za dodatne provjere do 1. rujna 2026., uz prilaganje potvrda o položenim ispitima i silabusa. Trošak prijave iznosi 60,00 €."
+    },
+    {
+      "question": "Koji je rok prijave za dodatne provjere DAK na diplomskoj razini?",
+      "answer": "Dodatne provjere za diplomski studij DAK prijavljuju se do 1. rujna 2026. do 12 h, uz trošak prijave od 20,00 €."
+    },
+    {
+      "question": "Koji je rok prijave za dodatne provjere MAPU na diplomskoj razini?",
+      "answer": "Kandidati koji su prijediplomski studij završili drugdje, a žele upisati diplomski studij na Muzičkoj akademiji, prijavljuju se za dodatne provjere do 1. rujna 2026., uz trošak od 40,00 €."
+    },
+    {
+      "question": "Koji je rok prijave za dodatne provjere RPOO na talijanskom jeziku na diplomskoj razini?",
+      "answer": "Dodatne provjere za diplomski studij RPOO na talijanskom jeziku prijavljuju se na fooz-ured@unipu.hr do 3. rujna 2026., uz trošak od 60,00 €."
+    },
+    {
+      "question": "Koliko iznosi školarina za redovite studente koji ponovno upisuju prvu godinu društvenih, humanističkih ili obrazovnih znanosti?",
+      "answer": "Redoviti studenti koji ponovno upisuju prvu godinu studija iz područja društvenih, humanističkih ili obrazovnih znanosti plaćaju 730,00 € na prijediplomskoj i diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za redovite studente koji ponovno upisuju prvu godinu tehničkih znanosti?",
+      "answer": "Redoviti studenti koji ponovno upisuju prvu godinu studija iz područja tehničkih znanosti plaćaju 796,34 € na prijediplomskoj i 929,06 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za redovite studente koji ponovno upisuju prvu godinu prirodnih znanosti?",
+      "answer": "Redoviti studenti koji ponovno upisuju prvu godinu studija iz područja prirodnih znanosti plaćaju 978,18 € i na prijediplomskoj i na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za redovite studente koji ponovno upisuju prvu godinu umjetničkog područja?",
+      "answer": "Redoviti studenti koji ponovno upisuju prvu godinu studija iz umjetničkog područja plaćaju 1.226,36 € i na prijediplomskoj i na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za redovite studente koji ponovno upisuju prvu godinu biomedicine i zdravstva?",
+      "answer": "Redoviti studenti koji ponovno upisuju prvu godinu studija iz biomedicine i zdravstva plaćaju 1.226,36 € na prijediplomskoj i 1.592,67 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente na FOOZ-u?",
+      "answer": "Izvanredni studenti RPOO na FOOZ-u plaćaju 800,00 € na prijediplomskoj razini, a 865,00 € na diplomskoj razini (za studije na hrvatskom ili talijanskom jeziku)."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente na FET-u?",
+      "answer": "Izvanredni studenti Primijenjene/Poslovne ekonomije i Kulture i turizma na FET-u plaćaju 665,00 € na prijediplomskoj i diplomskoj razini. Za online studij Primijenjene ekonomije, nakon izmjene odluke od 25. ožujka 2026., iznos je 960,00 € na obje razine."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente na Tehničkom fakultetu?",
+      "answer": "Izvanredni studenti plaćaju 800,00 € za stručni prijediplomski Proizvodno strojarstvo, 800,00 € za prijediplomski Računarstvo, te 930,00 € za diplomski Strojarstvo i 930,00 € za diplomski Računarstvo."
+    },
+    {
+      "question": "Koliko iznosi školarina za izvanredne studente Klavira i Solo pjevanja na Muzičkoj akademiji?",
+      "answer": "Prema izmjeni odluke od 31. listopada 2025. (za studente upisane do 2023./2024.), izvanredni studenti Klavira i Solo pjevanja plaćaju 2.000,00 € na prijediplomskoj i diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za strane državljane (izvan EU) iz humanističkih i društvenih znanosti?",
+      "answer": "Strani državljani izvan EU bez stalnog boravka u RH plaćaju za humanističke, društvene i interdisciplinarne/obrazovne znanosti 730,00 € na prijediplomskoj i diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za strane državljane (izvan EU) iz prirodnih i tehničkih znanosti?",
+      "answer": "Strani državljani izvan EU plaćaju za prirodne znanosti 980,00 € na obje razine, a za tehničke znanosti 800,00 € na prijediplomskoj i 930,00 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi školarina za strane državljane (izvan EU) na umjetničkom području i biomedicini?",
+      "answer": "Strani državljani izvan EU plaćaju za umjetničko područje 1.230,00 € na obje razine, a za biomedicinu i zdravstvo 1.230,00 € na stručnom prijediplomskom i 1.595,00 € na diplomskom studiju."
+    },
+    {
+      "question": "Koliko iznosi školarina za strane državljane na online studijima?",
+      "answer": "Strani državljani za online Primijenjenu ekonomiju (HR) plaćaju 960,00 € na obje razine, a za online Informatiku (HR) 2.000,00 € na prijediplomskoj i 3.000,00 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliko iznosi cijena nepoloženog ECTS boda na FET-u, FOOZ-u, FFPU-u i FIPU-u?",
+      "answer": "Prema odluci iz 2021., cijena nepoloženog ECTS boda za FET, FOOZ, FFPU i FIPU iznosi 289,00 kuna, uz ukupnu cijenu studija od 5.500,00 kuna."
+    },
+    {
+      "question": "Koliko iznosi cijena nepoloženog ECTS boda na Muzičkoj akademiji i DAK-u?",
+      "answer": "Cijena nepoloženog ECTS boda na Muzičkoj akademiji i DAK-u iznosi 486,00 kuna, uz ukupnu cijenu studija od 9.240,00 kuna."
+    },
+    {
+      "question": "Koliko iznosi cijena nepoloženog ECTS boda za Sestrinstvo?",
+      "answer": "Cijena nepoloženog ECTS boda za stručni prijediplomski studij Sestrinstvo iznosi 486,00 kuna (ukupna cijena 9.240,00 kn), a za diplomski studij Sestrinstvo 628,00 kuna (ukupna cijena 12.000,00 kn)."
+    },
+    {
+      "question": "Koliko iznosi cijena nepoloženog ECTS boda na Fakultetu prirodnih znanosti i Tehničkom fakultetu?",
+      "answer": "Cijena nepoloženog ECTS boda za Znanost o moru (FPZ) iznosi 388,00 kuna. Na Tehničkom fakultetu iznosi 316,00 kuna na prijediplomskoj i 368,00 kuna na diplomskoj razini."
+    },
+    {
+      "question": "Koliko ECTS bodova moram ostvariti da bih bio oslobođen plaćanja participacije?",
+      "answer": "Redoviti studenti koji ostvare 55 i više ECTS bodova (ili 30+ za studente s invaliditetom od 60% i više) oslobođeni su plaćanja participacije zahvaljujući subvenciji."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za nepopunjeno upisno mjesto na FET-u i FOOZ-u (redoviti studenti)?",
+      "answer": "Oportunitetni trošak za redovite studente FET-a (uključujući Kulturu i turizam) i FOOZ-a iznosi 243,33 €, jednako kao i za FFPU i FIPU."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za nepopunjeno upisno mjesto na Muzičkoj akademiji?",
+      "answer": "Oportunitetni trošak za redovite studente Muzičke akademije iznosi 408,79 €, jednako kao za stručni prijediplomski Sestrinstvo (MFPU) i prijediplomski/diplomski DAK."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za nepopunjeno upisno mjesto na diplomskom studiju Sestrinstvo?",
+      "answer": "Oportunitetni trošak za redovite studente diplomskog studija Sestrinstvo (MFPU) iznosi 530,89 €."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za nepopunjeno upisno mjesto na Fakultetu prirodnih znanosti i Tehničkom fakultetu?",
+      "answer": "Oportunitetni trošak za redovite studente Znanosti o moru (FPZ) iznosi 326,06 €. Na Tehničkom fakultetu iznosi 265,45 € na prijediplomskoj i 309,69 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za izvanredne studente na Fakultetu informatike?",
+      "answer": "Izvanredni studenti Informatike (prijediplomski i diplomski, redovni program) plaćaju oportunitetni trošak od 221,67 €, dok za online Informatiku (HR) iznosi 666,67 € na prijediplomskoj i 1.000,00 € na diplomskoj razini (jednako za nastavni smjer online diplomski)."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za izvanredne studente na Medicinskom i Tehničkom fakultetu?",
+      "answer": "Izvanredni studenti Sestrinstva plaćaju oportunitetni trošak od 410,00 € (stručni prijediplomski) odnosno 531,67 € (diplomski). Na Tehničkom fakultetu iznosi 266,67 € za stručni prijediplomski Proizvodno strojarstvo i prijediplomski Računarstvo, te 310,00 € za diplomski Strojarstvo i Računarstvo."
+    },
+    {
+      "question": "Koliki su oportunitetni troškovi za izvanredne studente na FET-u?",
+      "answer": "Izvanredni studenti Primijenjene/Poslovne ekonomije i Kulture i turizma plaćaju oportunitetni trošak od 221,67 €. Za online Primijenjenu ekonomiju iznosi 233,00 € na prijediplomskoj i 221,20 € na diplomskoj razini."
+    },
+    {
+      "question": "Koliko košta provedba okončanja studija (promocija)?",
+      "answer": "Provedba okončanja studija, odnosno promocija, košta 70,00 €."
+    },
+    {
+      "question": "Koliko košta prijelaz s drugog visokog učilišta ili drugog studija unutar Sveučilišta?",
+      "answer": "Prijelaz s drugog visokog učilišta ili drugog studija unutar Sveučilišta košta 60,00 €."
+    },
+    {
+      "question": "Koliko košta nastavak studija nakon prekida?",
+      "answer": "Nastavak studija nakon prekida košta 100,00 €."
+    },
+    {
+      "question": "Koliko košta razredbeni postupak odnosno dodatne provjere?",
+      "answer": "Opći razredbeni postupak / dodatne provjere koštaju 60,00 €, dok za Muzičku akademiju iznose 40,00 €, a za DAK 20,00 €."
+    },
+    {
+      "question": "Koliko košta ispis sa Sveučilišta?",
+      "answer": "Ispis sa Sveučilišta košta 40,00 €."
+    },
+    {
+      "question": "Koliko košta potvrda o izjednačavanju akademskih i stručnih naziva?",
+      "answer": "Potvrda o izjednačavanju akademskih i stručnih naziva košta 40,00 €."
+    },
+    {
+      "question": "Koliko košta provjera vjerodostojnosti svjedodžbi ili diploma?",
+      "answer": "Provjera vjerodostojnosti svjedodžbi ili diploma košta 30,00 €."
+    },
+    {
+      "question": "Koliko košta izvod iz nastavnog plana?",
+      "answer": "Izvod iz nastavnog plana košta 2,00 € po stranici."
+    },
+    {
+      "question": "Koje su kategorije Hrvata izvan RH koje se mogu prijaviti za upis?",
+      "answer": "Pravo prijave imaju pripadnici hrvatske nacionalne manjine u europskim državama (Austrija, Srbija, Slovenija, Slovačka, Rumunjska, Makedonija, Mađarska, Italija, Crna Gora, Češka, Kosovo, Bugarska) te pripadnici hrvatskog iseljeništva/dijaspore i njihovi potomci."
+    },
+    {
+      "question": "Koju dokumentaciju trebaju priložiti Hrvati izvan RH za prijediplomski upis?",
+      "answer": "Za prijediplomski upis Hrvati izvan RH prilažu potvrdu Središnjeg državnog ureda o pripadnosti, skenirane svjedodžbe svih razreda srednje škole, svjedodžbu o završnom ispitu/maturi i dokaz o uplati. Rang-lista se formira na temelju uspjeha iz srednje škole i završnog ispita."
+    },
+    {
+      "question": "Koju dokumentaciju trebaju priložiti Hrvati izvan RH za diplomski upis?",
+      "answer": "Za diplomski upis Hrvati izvan RH prilažu potvrdu Središnjeg državnog ureda, diplome/svjedodžbe o završenom prijediplomskom studiju, prijepis ocjena i dokaz o uplati. Rang-lista se formira na temelju prosjeka ocjena i kriterija istovrsnosti."
+    },
+    {
+      "question": "Na koji se rok odnosi natječaj za upis i koliko unaprijed se objavljuje?",
+      "answer": "Upis se obavlja na temelju javnog natječaja koji se objavljuje najmanje šest mjeseci prije početka nastave, a sadrži uvjete, broj mjesta, postupak, isprave i rokove."
+    },
+    {
+      "question": "Mogu li osobe bez odgovarajućeg srednjoškolskog obrazovanja upisati studij?",
+      "answer": "Iznimno, studij se može upisati i bez prethodnog odgovarajućeg školovanja za iznimno nadarene osobe, ako je Sveučilište općim aktom definiralo kriterije za to."
+    },
+    {
+      "question": "Mogu li osobe sa stručnim prijediplomskim studijem upisati diplomski sveučilišni studij?",
+      "answer": "Da, osobe sa završenim prijediplomskim stručnim studijem mogu kandidirati za diplomski sveučilišni studij, no odabir se može uvjetovati polaganjem ispita kompetencija i/ili razlikovnih ispita."
+    },
+    {
+      "question": "Što se događa ako student nakon plaćanja upisnine odustane od upisa?",
+      "answer": "Ako student nakon prihvata Općih uvjeta odustane od upisa nakon što je platio upisninu, Sveučilište zadržava pravo naplate nastalih troškova."
+    },
+    {
+      "question": "Što se događa ako student odustane prije stjecanja statusa studenta?",
+      "answer": "Ako student odustane prije stjecanja statusa studenta, povrat plaćene školarine vrši se prema odlukama nadležnih tijela Sveučilišta."
+    },
+    {
+      "question": "Čime se uređuju detaljna prava i obveze studenta?",
+      "answer": "Detaljna prava i obveze studenta uređuju se Ugovorom o studiranju, a obrada osobnih podataka provodi se u skladu s GDPR-om i Zakonom o provedbi Opće uredbe o zaštiti podataka."
+    },
+    {
+      "question": "Koji su ključni datumi vezani za prijavu i upis u srpnju 2026.?",
+      "answer": "U srpnju 2026. ključni datumi su: 2. srpnja rok za prijavu dodatnih provjera FOOZ (talijanski), 3.-4. srpnja dodatne provjere MAPU s objavom rezultata 4. srpnja, 6. srpnja rok za žalbe MAPU do 10 h, te 15. srpnja objava konačnih rang-lista za prijediplomski studij (srpanjski rok)."
+    },
+    {
+      "question": "Koji su ključni datumi vezani za prijavu i upis u rujnu 2026.?",
+      "answer": "U rujnu 2026. ključni datumi su: 1. rujna rok za dodatne provjere DAK i MAPU/Japanologiju, 3. rujna rok za FOOZ talijanski, 4. rujna dodatne provjere i rezultati MAPU te rok za potvrde poticajnih mjera, 7. rujna rok za žalbe MAPU, 11. rujna rok za neistovrsne diplomske prijave, 16. rujna objava rang-lista (prijediplomski), 28. rujna potvrda upisa neistovrsnih kandidata i rok za poticajne mjere (diplomski), 29. rujna rok za istovrsne diplomske prijave do 12h, te 30. rujna objava konačne rang-liste za diplomski studij."
+    },
+    {
+      "question": "Koji je rok za prijave kandidata Hrvata izvan RH?",
+      "answer": "Prijave kandidata Hrvata izvan RH primaju se od 28. kolovoza do 5. rujna 2026."
     }
   ]
 }

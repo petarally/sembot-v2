@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from .config import (
+    MIN_MARGIN,
     MIN_RETRIEVAL_SCORE,
     RERANK_HIGH_CONF,
     RERANK_MARGIN,
@@ -60,19 +61,25 @@ class ChatbotRouter:
         return self.get_response_sync(query)
 
     def get_response_sync(self, query: str) -> dict:
-        candidates = self.index.search(query, TOP_K)
+        qa_index = self.resolve(query)
+        return self._answer_for(qa_index) if qa_index is not None else self._fallback()
 
+    def resolve(self, query: str) -> int | None:
+        """Vrati qa_index odabranog odgovora ili None (suzdržavanje). Cijeli pipeline."""
+        candidates = self.index.search(query, TOP_K)
         # Stage 1: očito izvan domene -> suzdrži se.
         if not candidates or candidates[0].score < MIN_RETRIEVAL_SCORE:
-            return self._fallback()
-
-        # Stage 2: reranker za precizan poredak i provjeru sigurnosti.
+            return None
+        # Stage 2: reranker (ako je dostupan) ili margina za provjeru sigurnosti.
         chosen = self._decide(query, candidates)
-        return self._answer_for(chosen) if chosen is not None else self._fallback()
+        return chosen.qa_index if chosen is not None else None
 
     def _decide(self, query: str, candidates: list[Candidate]) -> Candidate | None:
         """Odaberi najboljeg kandidata ili None ako nismo dovoljno sigurni."""
         if not self.reranker.available:
+            # Ako je drugi kandidat preblizu prvom, model nije siguran -> suzdrži se.
+            if len(candidates) > 1 and (candidates[0].score - candidates[1].score) < MIN_MARGIN:
+                return None
             return candidates[0]  # već je prošao MIN_RETRIEVAL_SCORE
 
         questions = [self.qa_pairs[c.qa_index]["question"] for c in candidates]
@@ -88,11 +95,11 @@ class ChatbotRouter:
             return candidates[int(order[0])]
         return None
 
-    def _answer_for(self, candidate: Candidate) -> dict:
-        qa = self.qa_pairs[candidate.qa_index]
+    def _answer_for(self, qa_index: int) -> dict:
+        qa = self.qa_pairs[qa_index]
         return {
             "text": qa["answer"],
-            "suggested_questions": self.suggestions.next_questions(candidate.qa_index),
+            "suggested_questions": self.suggestions.next_questions(qa_index),
         }
 
     def _fallback(self) -> dict:

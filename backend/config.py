@@ -3,10 +3,10 @@
 import os
 
 # --- Modeli -----------------------------------------------------------------
-# Bi-encoder za semantičko pretraživanje. e5-small je najmanji dobar multijezični
-# model (pokriva hrvatski). Po potrebi nadogradi na ...-e5-base / ...-e5-large.
-# E5 modeli traže prefikse "query: " / "passage: ".
-EMBED_MODEL = os.environ.get("EMBED_MODEL", "intfloat/multilingual-e5-small")
+# Bi-encoder za semantičko pretraživanje. e5-base je odabran mjerenjem (bolji od
+# e5-small: 91% vs 84% hit@1, manje samouvjereno krivih). e5-small je lakša
+# alternativa, e5-large skuplja nadogradnja. E5 modeli traže "query: "/"passage: ".
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "intfloat/multilingual-e5-base")
 QUERY_PREFIX = os.environ.get("QUERY_PREFIX", "query: ")
 PASSAGE_PREFIX = os.environ.get("PASSAGE_PREFIX", "passage: ")
 
@@ -20,10 +20,15 @@ RERANKER_MODEL = os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 TOP_K = int(os.environ.get("TOP_K", 8))
 
 # --- Pragovi odluke ---------------------------------------------------------
-# POČETNE vrijednosti; OBAVEZNO kalibrirati na testnom skupu stvarnih upita.
+# Kalibrirano na testnom skupu (backend/eval_data.json) za EMBED_MODEL e5-base.
+# PRAG OVISI O MODELU — promijeniš li EMBED_MODEL, ponovno pokreni evaluaciju
+# (`python -m backend.evaluate`) i prilagodi ovu vrijednost.
 #
 # Ako je najbolja cosine sličnost ispod ovoga -> pitanje je izvan domene.
-MIN_RETRIEVAL_SCORE = float(os.environ.get("MIN_RETRIEVAL_SCORE", 0.80))
+MIN_RETRIEVAL_SCORE = float(os.environ.get("MIN_RETRIEVAL_SCORE", 0.82))
+# Minimalna razlika top-1 i top-2 (cosine) u bi-encoder putanji. Ako su preblizu,
+# model nije siguran -> radije se suzdrži nego pogađa. Kalibrirano evaluacijom.
+MIN_MARGIN = float(os.environ.get("MIN_MARGIN", 0.01))
 # Reranker (sigmoid) prag ispod kojeg se suzdržavamo od odgovora.
 RERANK_THRESHOLD = float(os.environ.get("RERANK_THRESHOLD", 0.50))
 # Iznad ovoga smo "sigurni" i ne tražimo marginu.
