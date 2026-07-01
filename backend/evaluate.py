@@ -11,10 +11,11 @@ from __future__ import annotations
 
 import json
 import os
+import time
 
 import numpy as np
 
-from .config import MIN_MARGIN, MIN_RETRIEVAL_SCORE, TOP_K
+from .config import MIN_MARGIN, MIN_RETRIEVAL_SCORE, TOP_K, USE_RERANKER
 from .router import ChatbotRouter
 
 EVAL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "eval_data.json")
@@ -23,20 +24,33 @@ EVAL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "eval_data.
 def main() -> None:
     tests = json.load(open(EVAL_PATH, encoding="utf-8"))
     router = ChatbotRouter()
+
+    # Reranker se učitava u pozadini — pričekaj ga prije mjerenja.
+    if USE_RERANKER:
+        print("Čekam da se reranker učita...")
+        for _ in range(600):
+            if router.reranker.available:
+                break
+            time.sleep(1)
+        print(f"Reranker dostupan: {router.reranker.available}")
+
     qa_index = {qa["question"]: i for i, qa in enumerate(router.qa_pairs)}
 
-    # Za svaki upit: očekivani indeks, top-1 (indeks, score) i rang očekivanog.
+    # Za svaki upit: očekivani indeks, STVARNI odabir pipelinea (resolve), te
+    # bi-encoder dijagnostika (top-1/score/margina/rang).
     rows = []
     for t in tests:
         expected = t.get("expected")
         exp_idx = qa_index.get(expected) if expected else None
         if expected and exp_idx is None:
             print(f"  ! expected nije u bazi: {expected!r}")
+        resolved = router.resolve(t["query"])
         cands = router.index.search(t["query"], TOP_K)
         rank = next((r for r, c in enumerate(cands) if c.qa_index == exp_idx), None)
         margin = cands[0].score - cands[1].score if len(cands) > 1 else 1.0
-        rows.append({"q": t["query"], "exp": exp_idx, "top1": cands[0].qa_index,
-                     "score": cands[0].score, "margin": margin, "rank": rank})
+        rows.append({"q": t["query"], "exp": exp_idx, "resolved": resolved,
+                     "top1": cands[0].qa_index, "score": cands[0].score,
+                     "margin": margin, "rank": rank})
 
     in_rows = [r for r in rows if r["exp"] is not None]
     ood_rows = [r for r in rows if r["exp"] is None]
@@ -46,15 +60,24 @@ def main() -> None:
     hit3 = sum(r["rank"] is not None and r["rank"] < 3 for r in in_rows)
     print("\n=== Kvaliteta dohvata (in-domain, bez praga) ===")
     print(f"  hit@1: {hit1}/{len(in_rows)}   hit@3: {hit3}/{len(in_rows)}")
-    misses = [r for r in in_rows if r["rank"] != 0]
-    if misses:
-        print("  Promašaji top-1 (model rangira krivo pitanje iznad točnog):")
-        for r in misses:
-            got = router.qa_pairs[r["top1"]]["question"]
-            print(f"    '{r['q']}'\n      dobio: {got}  (rang točnog: {r['rank']})")
 
-    # --- Ponašanje na trenutnoj konfiguraciji (prag + margina) ---
-    _report("Trenutna konfiguracija", MIN_RETRIEVAL_SCORE, MIN_MARGIN, in_rows, ood_rows)
+    # --- STVARNI pipeline (odražava EMBED_MODEL + USE_RERANKER + pragove) ---
+    rr = "uključen" if USE_RERANKER else "isključen"
+    correct = sum(r["resolved"] == r["exp"] for r in in_rows)
+    wrong = sum(r["resolved"] is not None and r["resolved"] != r["exp"] for r in in_rows)
+    abstain = sum(r["resolved"] is None for r in in_rows)
+    ood_ok = sum(r["resolved"] is None for r in ood_rows)
+    print(f"\n=== Stvarni pipeline (reranker {rr}) ===")
+    print(f"  in-domain:  točno {correct}/{len(in_rows)}  | KRIVO {wrong}  | suzdržan {abstain}")
+    print(f"  izvan teme: ispravno suzdržan {ood_ok}/{len(ood_rows)}")
+    bad = [r for r in in_rows if r["resolved"] is not None and r["resolved"] != r["exp"]]
+    if bad:
+        print("  Samouvjereno krivi (pipeline je odgovorio, ali pogrešno):")
+        for r in bad:
+            print(f"    '{r['q']}'\n      dobio: {router.qa_pairs[r['resolved']]['question']}")
+
+    if USE_RERANKER:
+        return  # cosine sweepovi nemaju smisla kad reranker odlučuje
 
     # --- Sweep praga (margina fiksna na trenutnoj) ---
     print(f"\n=== Sweep praga (margina={MIN_MARGIN:.2f}) | ✓točno ✗krivo –suzdržan | OOD✓ ===")
